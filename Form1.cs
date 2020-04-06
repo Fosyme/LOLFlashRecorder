@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuickTimeEnter
@@ -95,7 +88,10 @@ namespace QuickTimeEnter
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+            if (SwitchWindow.SwitchWindowFromQTE("notepad")) //舍弃将会造成输入持续进行
+            {
+                OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+            }
         }
     }
 }

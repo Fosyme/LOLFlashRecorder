@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuickTimeEnter
 {
@@ -13,10 +10,26 @@ namespace QuickTimeEnter
 
         public static void KeyTimeToGame(GameTime g, SummonerFlashTime s)
         {
+            string msg = "";
             for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine(summonerName[i] + TimeFix(g.Minutes, g.Seconds, s.Time[i]));
+                msg += (summonerName[i] + TimeFix(g.Minutes, g.Seconds, s.Time[i])).ToLower() + " ";
+                
             }
+            Console.WriteLine(msg);
+            try
+            {
+                SendKeys.SendWait("{ENTER}" + "{CAPSLOCK}" + msg + "{CAPSLOCK}" + "{ENTER}");
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.ToString());
+                throw;
+            }
+            //SendKeys.SendWait("{CAPSLOCK}");
+            //SendKeys.SendWait(msg);
+            //SendKeys.SendWait("{CAPSLOCK}");
+            //SendKeys.SendWait("{ENTER}");
         }
 
         private static string TimeFix(uint m, uint s, uint st)

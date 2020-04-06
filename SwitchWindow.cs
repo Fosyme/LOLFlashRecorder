@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QuickTimeEnter
 {
@@ -48,7 +44,7 @@ namespace QuickTimeEnter
         [DllImport("user32.dll")]
         public static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
 
-        public static void SwitchWindowFromQTE(string gameName)
+        public static bool SwitchWindowFromQTE(string gameName)
         {
             Process[] processes = Process.GetProcessesByName(gameName);
             if (processes.Length > 0)
@@ -56,7 +52,9 @@ namespace QuickTimeEnter
                 IntPtr handle = processes[0].MainWindowHandle;
                 SendMessage(handle, WM_SYSCOMMAND2, new IntPtr(SC_MAXIMIZE2), IntPtr.Zero);	// 最大化
                 SwitchToThisWindow(handle, true);	// 激活
+                return true;
             }
+            return false;
         }
     }
 }
