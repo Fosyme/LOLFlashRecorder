@@ -135,9 +135,9 @@
             // btnSwitchGame
             // 
             this.btnSwitchGame.Font = new System.Drawing.Font("黑体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSwitchGame.Location = new System.Drawing.Point(75, 542);
+            this.btnSwitchGame.Location = new System.Drawing.Point(12, 542);
             this.btnSwitchGame.Name = "btnSwitchGame";
-            this.btnSwitchGame.Size = new System.Drawing.Size(209, 48);
+            this.btnSwitchGame.Size = new System.Drawing.Size(204, 48);
             this.btnSwitchGame.TabIndex = 8;
             this.btnSwitchGame.Text = "切换至游戏";
             this.btnSwitchGame.UseVisualStyleBackColor = true;
@@ -196,12 +196,14 @@
             // 
             // txtJgShortcutKey
             // 
-            this.txtJgShortcutKey.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtJgShortcutKey.Location = new System.Drawing.Point(175, 13);
+            this.txtJgShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtJgShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtJgShortcutKey.Name = "txtJgShortcutKey";
-            this.txtJgShortcutKey.Size = new System.Drawing.Size(152, 26);
+            this.txtJgShortcutKey.Size = new System.Drawing.Size(152, 29);
             this.txtJgShortcutKey.TabIndex = 12;
+            this.txtJgShortcutKey.Text = "F2";
             this.txtJgShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtJgShortcutKey.TextChanged += new System.EventHandler(this.txtJgShortcutKey_TextChanged);
             // 
             // lblJg
             // 
@@ -235,12 +237,14 @@
             // 
             // txtMidShortcutKey
             // 
-            this.txtMidShortcutKey.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtMidShortcutKey.Location = new System.Drawing.Point(175, 13);
+            this.txtMidShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtMidShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtMidShortcutKey.Name = "txtMidShortcutKey";
-            this.txtMidShortcutKey.Size = new System.Drawing.Size(152, 26);
+            this.txtMidShortcutKey.Size = new System.Drawing.Size(152, 29);
             this.txtMidShortcutKey.TabIndex = 12;
+            this.txtMidShortcutKey.Text = "F3";
             this.txtMidShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMidShortcutKey.TextChanged += new System.EventHandler(this.txtMidShortcutKey_TextChanged);
             // 
             // lblMid
             // 
@@ -274,12 +278,14 @@
             // 
             // txtAdcShortcutKey
             // 
-            this.txtAdcShortcutKey.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtAdcShortcutKey.Location = new System.Drawing.Point(175, 13);
+            this.txtAdcShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtAdcShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtAdcShortcutKey.Name = "txtAdcShortcutKey";
-            this.txtAdcShortcutKey.Size = new System.Drawing.Size(152, 26);
+            this.txtAdcShortcutKey.Size = new System.Drawing.Size(152, 29);
             this.txtAdcShortcutKey.TabIndex = 12;
+            this.txtAdcShortcutKey.Text = "F4";
             this.txtAdcShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAdcShortcutKey.TextChanged += new System.EventHandler(this.txtAdcShortcutKey_TextChanged);
             // 
             // lblAdc
             // 
@@ -313,12 +319,14 @@
             // 
             // txtSupShortcutKey
             // 
-            this.txtSupShortcutKey.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSupShortcutKey.Location = new System.Drawing.Point(175, 13);
+            this.txtSupShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSupShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtSupShortcutKey.Name = "txtSupShortcutKey";
-            this.txtSupShortcutKey.Size = new System.Drawing.Size(152, 26);
+            this.txtSupShortcutKey.Size = new System.Drawing.Size(152, 29);
             this.txtSupShortcutKey.TabIndex = 12;
+            this.txtSupShortcutKey.Text = "F5";
             this.txtSupShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSupShortcutKey.TextChanged += new System.EventHandler(this.txtSupShortcutKey_TextChanged);
             // 
             // lblSup
             // 
@@ -342,12 +350,14 @@
             // 
             // txtTopShortcutKey
             // 
-            this.txtTopShortcutKey.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtTopShortcutKey.Location = new System.Drawing.Point(175, 13);
+            this.txtTopShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtTopShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtTopShortcutKey.Name = "txtTopShortcutKey";
-            this.txtTopShortcutKey.Size = new System.Drawing.Size(152, 26);
+            this.txtTopShortcutKey.Size = new System.Drawing.Size(152, 29);
             this.txtTopShortcutKey.TabIndex = 12;
+            this.txtTopShortcutKey.Text = "F1";
             this.txtTopShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTopShortcutKey.TextChanged += new System.EventHandler(this.txtTopShortcutKey_TextChanged);
             // 
             // pnlTop
             // 
@@ -407,13 +417,14 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(290, 553);
+            this.button1.Font = new System.Drawing.Font("黑体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(221, 542);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(62, 52);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "测试";
+            this.button1.Size = new System.Drawing.Size(131, 48);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "发送";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -423,7 +434,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(364, 611);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblInputInfo);
             this.Controls.Add(this.btnSetFromTop);
             this.Controls.Add(this.pnlSup);
@@ -435,6 +445,7 @@
             this.Controls.Add(this.lblShortcutKeys);
             this.Controls.Add(this.lblDelay);
             this.Controls.Add(this.lblLocation);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSwitchGame);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnStart);

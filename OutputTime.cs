@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace QuickTimeEnter
@@ -23,13 +24,8 @@ namespace QuickTimeEnter
             }
             catch (InvalidOperationException e)
             {
-                Console.WriteLine(e.ToString());
-                throw;
+                throw e;
             }
-            //SendKeys.SendWait("{CAPSLOCK}");
-            //SendKeys.SendWait(msg);
-            //SendKeys.SendWait("{CAPSLOCK}");
-            //SendKeys.SendWait("{ENTER}");
         }
 
         private static string TimeFix(uint m, uint s, uint st)
@@ -42,5 +38,27 @@ namespace QuickTimeEnter
             }
             return minutes.ToString() + seconds.ToString();
         }
+
+        //第二种方案
+        /*
+        [DllImport("user32.dll")]
+        public static extern void keybd_event(
+            byte bVk,
+            byte bScan,
+            int dwFlags,     //这里为整数类型 0为按下，2为释放
+            int dwExtraInfo
+        );
+
+        public static void Click()
+        {
+            keybd_event((byte)Keys.CapsLock, 0, 0, 0);
+            keybd_event((byte)Keys.CapsLock, 0, 2, 0);
+            keybd_event((byte)Keys.A, 0, 0, 0);
+            keybd_event((byte)Keys.A, 0, 2, 0);
+            keybd_event((byte)Keys.CapsLock, 0, 0, 0);
+            keybd_event((byte)Keys.CapsLock, 0, 2, 0);
+        }
+        */
+
     }
 }

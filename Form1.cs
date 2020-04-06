@@ -20,6 +20,7 @@ namespace QuickTimeEnter
         {
             pattern = @"^\d{1,2}[:：][0-5]?[0-9]$";
             gameName = "League of Legends";
+            GlobalShortcutKey.RegDefault(Handle);
         }
 
         private void btnSetFromTop_Click(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace QuickTimeEnter
                 timer1.Enabled = false;
                 btnStart.Text = "开始";
             }
-            
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -86,12 +87,81 @@ namespace QuickTimeEnter
             //System.Diagnostics.Process.Start();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, MouseEventArgs e)
         {
+            #region 解决一个问题
+
+            /// <summary>
+            /// 关于 Click(EventArgs) 事件和 MouseClick(MouseEventArgs) 事件的区别和影响
+            /// </summary>
+            /// 
+            #endregion
+
             if (SwitchWindow.SwitchWindowFromQTE("notepad")) //舍弃将会造成输入持续进行
             {
-                OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+                //OutputTime.Click();
             }
+            OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+        }
+
+        private void txtTopShortcutKey_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtJgShortcutKey_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMidShortcutKey_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAdcShortcutKey_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSupShortcutKey_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_HOTKEY = 0x0312;
+            //按快捷键 
+            switch (m.Msg)
+            {
+                case WM_HOTKEY:
+                    switch (m.WParam.ToInt32())
+                    {
+                        case (int)KeyName.Top:    //按下的是Shift+S
+                                                  //此处填写快捷键响应代码         
+                            break;
+
+                        case (int)KeyName.Jg:     //按下的是Ctrl+B
+                                                  //此处填写快捷键响应代码
+                            break;
+
+                        case (int)KeyName.Mid:    //按下的是Alt+D
+                                     //此处填写快捷键响应代码
+                            break;
+
+                        case (int)KeyName.Adc:
+
+                            break;
+
+                        case (int)KeyName.Sup:
+
+                            break;
+                    }
+                    break;
+            }
+            base.WndProc(ref m);
         }
     }
 }
