@@ -135,7 +135,7 @@
             // btnSwitchGame
             // 
             this.btnSwitchGame.Font = new System.Drawing.Font("黑体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSwitchGame.Location = new System.Drawing.Point(12, 542);
+            this.btnSwitchGame.Location = new System.Drawing.Point(80, 542);
             this.btnSwitchGame.Name = "btnSwitchGame";
             this.btnSwitchGame.Size = new System.Drawing.Size(204, 48);
             this.btnSwitchGame.TabIndex = 8;
@@ -196,6 +196,7 @@
             // 
             // txtJgShortcutKey
             // 
+            this.txtJgShortcutKey.Enabled = false;
             this.txtJgShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtJgShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtJgShortcutKey.Name = "txtJgShortcutKey";
@@ -237,6 +238,7 @@
             // 
             // txtMidShortcutKey
             // 
+            this.txtMidShortcutKey.Enabled = false;
             this.txtMidShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtMidShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtMidShortcutKey.Name = "txtMidShortcutKey";
@@ -278,6 +280,7 @@
             // 
             // txtAdcShortcutKey
             // 
+            this.txtAdcShortcutKey.Enabled = false;
             this.txtAdcShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtAdcShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtAdcShortcutKey.Name = "txtAdcShortcutKey";
@@ -319,6 +322,7 @@
             // 
             // txtSupShortcutKey
             // 
+            this.txtSupShortcutKey.Enabled = false;
             this.txtSupShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtSupShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtSupShortcutKey.Name = "txtSupShortcutKey";
@@ -350,6 +354,7 @@
             // 
             // txtTopShortcutKey
             // 
+            this.txtTopShortcutKey.Enabled = false;
             this.txtTopShortcutKey.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtTopShortcutKey.Location = new System.Drawing.Point(175, 10);
             this.txtTopShortcutKey.Name = "txtTopShortcutKey";
@@ -445,13 +450,13 @@
             this.Controls.Add(this.lblShortcutKeys);
             this.Controls.Add(this.lblDelay);
             this.Controls.Add(this.lblLocation);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSwitchGame);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.txtGameTime);
             this.Controls.Add(this.lblGameTime);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";

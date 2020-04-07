@@ -7,25 +7,21 @@ namespace QuickTimeEnter
     class OutputTime
     {
         private static string[] summonerName =
-            {"Top", "Jg", "Mid", "ADC", "Sup"};
+            {"top", "jg", "mid", "adc", "sup"};
 
         public static void KeyTimeToGame(GameTime g, SummonerFlashTime s)
         {
             string msg = "";
             for (int i = 0; i < 5; i++)
             {
-                msg += (summonerName[i] + TimeFix(g.Minutes, g.Seconds, s.Time[i])).ToLower() + " ";
-                
+                if (s.Time[i] == 0)
+                {
+                    continue;
+                }
+                msg += summonerName[i] + TimeFix(g.Minutes, g.Seconds, s.Time[i]) + " ";
             }
             Console.WriteLine(msg);
-            try
-            {
-                SendKeys.SendWait("{ENTER}" + "{CAPSLOCK}" + msg + "{CAPSLOCK}" + "{ENTER}");
-            }
-            catch (InvalidOperationException e)
-            {
-                throw e;
-            }
+            SendKeys.SendWait("{ENTER}" + "{CAPSLOCK}" + msg + "{CAPSLOCK}" + "{ENTER}");
         }
 
         private static string TimeFix(uint m, uint s, uint st)
@@ -39,7 +35,7 @@ namespace QuickTimeEnter
             return minutes.ToString() + seconds.ToString();
         }
 
-        //第二种方案
+        #region 第二种方案
         /*
         [DllImport("user32.dll")]
         public static extern void keybd_event(
@@ -59,6 +55,6 @@ namespace QuickTimeEnter
             keybd_event((byte)Keys.CapsLock, 0, 2, 0);
         }
         */
-
+        #endregion
     }
 }
