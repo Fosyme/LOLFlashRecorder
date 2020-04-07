@@ -64,7 +64,6 @@
             this.btnSetFromTop = new System.Windows.Forms.Button();
             this.lblInputInfo = new System.Windows.Forms.Label();
             this.lblDelay = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlJg.SuspendLayout();
             this.pnlMid.SuspendLayout();
@@ -420,17 +419,6 @@
             this.lblDelay.TabIndex = 11;
             this.lblDelay.Text = "剩余时间";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("黑体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(221, 542);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 48);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "发送";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -456,7 +444,6 @@
             this.Controls.Add(this.txtGameTime);
             this.Controls.Add(this.lblGameTime);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -514,7 +501,6 @@
         private System.Windows.Forms.Label lblAdcETA;
         private System.Windows.Forms.Label lblSupETA;
         private System.Windows.Forms.Label lblTopETA;
-        private System.Windows.Forms.Button button1;
     }
 }
 
