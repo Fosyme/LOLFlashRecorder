@@ -6,12 +6,22 @@ namespace QuickTimeEnter
     {
         private uint[] time;
 
-        public SummonerFlashTime(params string[] t)
+        public SummonerFlashTime()
         {
             time = new uint[5];
             for (int i = 0; i < 5; i++)
             {
-                time[i] = t[i].Equals("") || t[i] == null ? 0 : uint.Parse(t[i]);
+                time[i] = 0;
+            }
+        }
+        public SummonerFlashTime(params Label[] labels)
+        {
+            time = new uint[5];
+            for (int i = 0; i < 5; i++)
+            {
+                time[i] = 
+                    (labels[i].Text.Equals("") || labels[i].Text == null || labels[i].Text.Equals("0")) ? 
+                    0 : uint.Parse(labels[i].Text);
             }
         }
 

@@ -11,7 +11,8 @@ namespace QuickTimeEnter
         Jg,
         Mid,
         Adc,
-        Sup
+        Sup,
+        Send = 10
     }
 
     class GlobalShortcutKey
@@ -29,7 +30,7 @@ namespace QuickTimeEnter
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool UnregisterHotKey(
             IntPtr hWnd,                //要取消热键的窗口的句柄
-            int id                      //要取消热键的ID
+            KeyName id                      //要取消热键的ID
             );
 
         //定义了辅助键的名称（将数字转变为字符以便于记忆，也可去除此枚举而直接使用数值）
@@ -43,21 +44,42 @@ namespace QuickTimeEnter
             WindowsKey = 8
         }
 
-        public static void RegDefault(IntPtr ptr)
+        public static void Start(IntPtr ptr)
         {
-            RegisterHotKey(ptr, KeyName.Top, KeyModifiers.None, Keys.S);
-            
+            RegisterHotKey(ptr, KeyName.Top, KeyModifiers.None, Keys.F1);
+            RegisterHotKey(ptr, KeyName.Jg, KeyModifiers.None, Keys.F2);
+            RegisterHotKey(ptr, KeyName.Mid, KeyModifiers.None, Keys.F3);
+            RegisterHotKey(ptr, KeyName.Adc, KeyModifiers.None, Keys.F4);
+            RegisterHotKey(ptr, KeyName.Sup, KeyModifiers.None, Keys.F5);
+            RegisterHotKey(ptr, KeyName.Top + 5, KeyModifiers.Shift, Keys.F1);
+            RegisterHotKey(ptr, KeyName.Jg + 5, KeyModifiers.Shift, Keys.F2);
+            RegisterHotKey(ptr, KeyName.Mid + 5, KeyModifiers.Shift, Keys.F3);
+            RegisterHotKey(ptr, KeyName.Adc + 5, KeyModifiers.Shift, Keys.F4);
+            RegisterHotKey(ptr, KeyName.Sup + 5, KeyModifiers.Shift, Keys.F5);
+
+            RegisterHotKey(ptr, KeyName.Send, KeyModifiers.None, Keys.F6);
         }
 
-        public static void Activated()
+        /* 暂未实现
+         public static void Modify()
+         {
+
+         }
+         */
+
+        public static void Leave(IntPtr ptr)
         {
-
+            UnregisterHotKey(ptr, KeyName.Top);
+            UnregisterHotKey(ptr, KeyName.Jg);
+            UnregisterHotKey(ptr, KeyName.Mid);
+            UnregisterHotKey(ptr, KeyName.Adc);
+            UnregisterHotKey(ptr, KeyName.Sup);
+            UnregisterHotKey(ptr, KeyName.Top + 5);
+            UnregisterHotKey(ptr, KeyName.Jg + 5);
+            UnregisterHotKey(ptr, KeyName.Mid + 5);
+            UnregisterHotKey(ptr, KeyName.Adc + 5);
+            UnregisterHotKey(ptr, KeyName.Sup + 5);
+            UnregisterHotKey(ptr, KeyName.Send);
         }
-
-        public static void Leave()
-        {
-
-        }
-
     }
 }

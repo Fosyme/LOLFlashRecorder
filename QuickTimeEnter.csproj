@@ -106,7 +106,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\Ellipsis.gif" />
     <Content Include="src\logo_32.ico" />
     <Content Include="src\logo_48.ico" />
     <Content Include="src\logo_64.ico" />

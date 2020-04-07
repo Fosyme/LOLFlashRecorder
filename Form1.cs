@@ -20,7 +20,7 @@ namespace QuickTimeEnter
         {
             pattern = @"^\d{1,2}[:：][0-5]?[0-9]$";
             gameName = "League of Legends";
-            GlobalShortcutKey.RegDefault(Handle);
+            GlobalShortcutKey.Start(Handle);
         }
 
         private void btnSetFromTop_Click(object sender, EventArgs e)
@@ -35,11 +35,6 @@ namespace QuickTimeEnter
             timer1.Enabled = false;
             btnStart.Text = "开始";
             txtGameTime.Text = "00:00";
-            lblTopETA.Text = "20";
-            lblJgETA.Text = "20";
-            lblMidETA.Text = "20";
-            lblAdcETA.Text = "20";
-            lblSupETA.Text = "20";
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -54,8 +49,7 @@ namespace QuickTimeEnter
                 }
                 string[] nowGameTime = txtGameTime.Text.Split(':', '：');
                 gameTime = new GameTime(nowGameTime[0], nowGameTime[1]);
-                summonerFlashTime = new SummonerFlashTime
-                    (lblTopETA.Text, lblJgETA.Text, lblMidETA.Text, lblAdcETA.Text, lblSupETA.Text);
+                summonerFlashTime = new SummonerFlashTime(lblTopETA, lblJgETA, lblMidETA, lblAdcETA, lblSupETA);
                 timer1.Enabled = true;
             }
             else
@@ -94,19 +88,21 @@ namespace QuickTimeEnter
             /// <summary>
             /// 关于 Click(EventArgs) 事件和 MouseClick(MouseEventArgs) 事件的区别和影响
             /// </summary>
-            /// 
+            /// 回车指令判定为触发了Click事件，导致该函数被调用
+            /// MouseClick只会对鼠标的单击事件做出响应
             #endregion
-
+            /*
             if (SwitchWindow.SwitchWindowFromQTE("notepad")) //舍弃将会造成输入持续进行
             {
-                //OutputTime.Click();
+                OutputTime.Click();
             }
+            */
             OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
         }
 
         private void txtTopShortcutKey_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void txtJgShortcutKey_TextChanged(object sender, EventArgs e)
@@ -133,33 +129,67 @@ namespace QuickTimeEnter
         protected override void WndProc(ref Message m)
         {
             const int WM_HOTKEY = 0x0312;
-            //按快捷键 
-            switch (m.Msg)
+            if (summonerFlashTime != null && m.Msg==WM_HOTKEY)
             {
-                case WM_HOTKEY:
-                    switch (m.WParam.ToInt32())
-                    {
-                        case (int)KeyName.Top:    //按下的是Shift+S
-                                                  //此处填写快捷键响应代码         
-                            break;
+                // 快捷键事件
+                switch (m.WParam.ToInt32())
+                {
+                    //设置时长
+                    case (int)KeyName.Top:
+                        lblTopETA.Text = "300";
+                        summonerFlashTime.Time[0] = 300;
+                        break;
 
-                        case (int)KeyName.Jg:     //按下的是Ctrl+B
-                                                  //此处填写快捷键响应代码
-                            break;
+                    case (int)KeyName.Jg:
+                        lblJgETA.Text = "300";
+                        summonerFlashTime.Time[1] = 300;
+                        break;
 
-                        case (int)KeyName.Mid:    //按下的是Alt+D
-                                     //此处填写快捷键响应代码
-                            break;
+                    case (int)KeyName.Mid:
+                        lblMidETA.Text = "300";
+                        summonerFlashTime.Time[2] = 300;
+                        break;
 
-                        case (int)KeyName.Adc:
+                    case (int)KeyName.Adc:
+                        lblAdcETA.Text = "300";
+                        summonerFlashTime.Time[3] = 300;
+                        break;
 
-                            break;
+                    case (int)KeyName.Sup:
+                        lblSupETA.Text = "300";
+                        summonerFlashTime.Time[4] = 300;
+                        break;
 
-                        case (int)KeyName.Sup:
+                    //取消时长
+                    case (int)KeyName.Top + 5:
+                        lblTopETA.Text = "";
+                        summonerFlashTime.Time[0] = 0;
+                        break;
 
-                            break;
-                    }
-                    break;
+                    case (int)KeyName.Jg + 5:
+                        lblJgETA.Text = "";
+                        summonerFlashTime.Time[1] = 0;
+                        break;
+
+                    case (int)KeyName.Mid + 5:
+                        lblMidETA.Text = "";
+                        summonerFlashTime.Time[2] = 0;
+                        break;
+
+                    case (int)KeyName.Adc + 5:
+                        lblAdcETA.Text = "";
+                        summonerFlashTime.Time[3] = 0;
+                        break;
+
+                    case (int)KeyName.Sup + 5:
+                        lblSupETA.Text = "";
+                        summonerFlashTime.Time[4] = 0;
+                        break;
+
+                    case (int)KeyName.Send:
+                        OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+                        break;
+                }
             }
             base.WndProc(ref m);
         }
