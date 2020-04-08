@@ -56,8 +56,8 @@ namespace QuickTimeEnter
             RegisterHotKey(ptr, KeyName.Mid + 5, KeyModifiers.Shift, Keys.F3);
             RegisterHotKey(ptr, KeyName.Adc + 5, KeyModifiers.Shift, Keys.F4);
             RegisterHotKey(ptr, KeyName.Sup + 5, KeyModifiers.Shift, Keys.F5);
-
             RegisterHotKey(ptr, KeyName.Send, KeyModifiers.None, Keys.F6);
+            //测试
         }
 
         /* 暂未实现

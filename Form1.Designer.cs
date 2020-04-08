@@ -64,6 +64,7 @@
             this.btnSetFromTop = new System.Windows.Forms.Button();
             this.lblInputInfo = new System.Windows.Forms.Label();
             this.lblDelay = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlJg.SuspendLayout();
             this.pnlMid.SuspendLayout();
@@ -189,9 +190,8 @@
             this.lblJgETA.Font = new System.Drawing.Font("造字工房朗倩（非商用）常规体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblJgETA.Location = new System.Drawing.Point(92, 15);
             this.lblJgETA.Name = "lblJgETA";
-            this.lblJgETA.Size = new System.Drawing.Size(24, 22);
+            this.lblJgETA.Size = new System.Drawing.Size(0, 22);
             this.lblJgETA.TabIndex = 13;
-            this.lblJgETA.Text = "0";
             // 
             // txtJgShortcutKey
             // 
@@ -231,9 +231,8 @@
             this.lblMidETA.Font = new System.Drawing.Font("造字工房朗倩（非商用）常规体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblMidETA.Location = new System.Drawing.Point(92, 15);
             this.lblMidETA.Name = "lblMidETA";
-            this.lblMidETA.Size = new System.Drawing.Size(24, 22);
+            this.lblMidETA.Size = new System.Drawing.Size(0, 22);
             this.lblMidETA.TabIndex = 13;
-            this.lblMidETA.Text = "0";
             // 
             // txtMidShortcutKey
             // 
@@ -273,9 +272,8 @@
             this.lblAdcETA.Font = new System.Drawing.Font("造字工房朗倩（非商用）常规体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblAdcETA.Location = new System.Drawing.Point(92, 15);
             this.lblAdcETA.Name = "lblAdcETA";
-            this.lblAdcETA.Size = new System.Drawing.Size(24, 22);
+            this.lblAdcETA.Size = new System.Drawing.Size(0, 22);
             this.lblAdcETA.TabIndex = 13;
-            this.lblAdcETA.Text = "0";
             // 
             // txtAdcShortcutKey
             // 
@@ -315,9 +313,8 @@
             this.lblSupETA.Font = new System.Drawing.Font("造字工房朗倩（非商用）常规体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblSupETA.Location = new System.Drawing.Point(92, 15);
             this.lblSupETA.Name = "lblSupETA";
-            this.lblSupETA.Size = new System.Drawing.Size(24, 22);
+            this.lblSupETA.Size = new System.Drawing.Size(0, 22);
             this.lblSupETA.TabIndex = 13;
-            this.lblSupETA.Text = "0";
             // 
             // txtSupShortcutKey
             // 
@@ -379,9 +376,8 @@
             this.lblTopETA.Font = new System.Drawing.Font("造字工房朗倩（非商用）常规体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblTopETA.Location = new System.Drawing.Point(92, 15);
             this.lblTopETA.Name = "lblTopETA";
-            this.lblTopETA.Size = new System.Drawing.Size(24, 22);
+            this.lblTopETA.Size = new System.Drawing.Size(0, 22);
             this.lblTopETA.TabIndex = 13;
-            this.lblTopETA.Text = "0";
             // 
             // timer1
             // 
@@ -419,6 +415,16 @@
             this.lblDelay.TabIndex = 11;
             this.lblDelay.Text = "剩余时间";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(300, 542);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(52, 39);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "测试\r\n按钮";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -427,6 +433,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(364, 611);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblInputInfo);
             this.Controls.Add(this.btnSetFromTop);
             this.Controls.Add(this.pnlSup);
@@ -501,6 +508,7 @@
         private System.Windows.Forms.Label lblAdcETA;
         private System.Windows.Forms.Label lblSupETA;
         private System.Windows.Forms.Label lblTopETA;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -35,6 +35,11 @@ namespace QuickTimeEnter
             timer1.Enabled = false;
             btnStart.Text = "开始";
             txtGameTime.Text = "00:00";
+            lblTopETA.Text = "";
+            lblJgETA.Text = "";
+            lblMidETA.Text = "";
+            lblAdcETA.Text = "";
+            lblSupETA.Text = "";
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -91,13 +96,15 @@ namespace QuickTimeEnter
             /// 回车指令判定为触发了Click事件，导致该函数被调用
             /// MouseClick只会对鼠标的单击事件做出响应
             #endregion
-            /*
-            if (SwitchWindow.SwitchWindowFromQTE("notepad")) //舍弃将会造成输入持续进行
+            //LeagueClientUx
+            //SwitchWindow.SwitchWindowFromQTE("notepad")
+            if (true)
             {
-                OutputTime.Click();
+                System.Threading.Thread.Sleep(1000);
+                OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
             }
-            */
-            OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+            
+            //OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
         }
 
         private void txtTopShortcutKey_TextChanged(object sender, EventArgs e)

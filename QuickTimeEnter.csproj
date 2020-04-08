@@ -79,6 +79,7 @@
     <Compile Include="OutputTime.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimulateIO.cs" />
     <Compile Include="SummonerFlashTime.cs" />
     <Compile Include="SwitchWindow.cs" />
     <EmbeddedResource Include="Form1.resx">
