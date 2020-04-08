@@ -9,11 +9,13 @@ namespace QuickTimeEnter
         private static string[] summonerName =
             {"top", "jg", "mid", "adc", "sup"};
 
+        //将时间格式化输出
         public static void KeyTimeToGame(GameTime g, SummonerFlashTime s)
         {
             string msg = "";
             for (int i = 0; i < 5; i++)
             {
+                //判断是否需要输出的信息
                 if (s.Time[i] == 0)
                 {
                     continue;
@@ -33,6 +35,8 @@ namespace QuickTimeEnter
                             throw;
                         }
             */
+
+            //从底层模拟键盘输入
             SimulateIO.MykeyDown((int)Keys.Enter);
             SimulateIO.MykeyUp((int)Keys.Enter);
             SimulateIO.MykeyDown((int)Keys.CapsLock);
@@ -45,6 +49,7 @@ namespace QuickTimeEnter
 
         }
 
+        //将信息格式化处理
         private static string TimeFix(uint m, uint s, uint st)
         {
             uint minutes = m + (s + st) / 60;
@@ -56,10 +61,12 @@ namespace QuickTimeEnter
             return minutes.ToString() + seconds.ToString();
         }
 
+        //将主体信息部分进行底层模拟信号处理
         public static void Click(char[] msg)
         {
             for (int i = 0; i < msg.Length; i++)
             {
+                //LOL不支持消息队列输出，所以不要碰下面的代码
                 #region 自闭代码，谁碰谁知道
 /*
                     object o;

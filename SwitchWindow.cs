@@ -44,6 +44,7 @@ namespace QuickTimeEnter
         [DllImport("user32.dll")]
         public static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
 
+        //从软件界面转跳到另一个程序界面，利用任务栏的程序名
         public static bool SwitchWindowFromQTE(string gameName)
         {
             Process[] processes = Process.GetProcessesByName(gameName);

@@ -132,7 +132,7 @@ namespace QuickTimeEnter
 
         }
 
-
+        // 接收快捷键信息，然后执行相关操作
         protected override void WndProc(ref Message m)
         {
             const int WM_HOTKEY = 0x0312;

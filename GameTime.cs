@@ -4,8 +4,8 @@ namespace QuickTimeEnter
 {
     class GameTime
     {
-        private uint minutes;
-        private uint seconds;
+        private uint minutes;   //分钟
+        private uint seconds;   //秒钟
 
         public GameTime(string m, string s)
         {
@@ -16,11 +16,13 @@ namespace QuickTimeEnter
         public uint Minutes { get => minutes; set => minutes = value; }
         public uint Seconds { get => seconds; set => seconds = value; }
 
+        //timer运行一次，游戏时间加一秒
         public void StartTimer(TextBox textBox)
         {
             string m;
             string s;
 
+            //将时间格式统一化
             if (seconds < 59)
             {
                 seconds++;

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace QuickTimeEnter
 {
+    //快捷键发送信号枚举
     enum KeyName
     {
         Top,
@@ -14,7 +15,7 @@ namespace QuickTimeEnter
         Sup,
         Send = 10
     }
-
+    
     class GlobalShortcutKey
     {
         //如果函数执行成功，返回值不为0。
@@ -44,6 +45,7 @@ namespace QuickTimeEnter
             WindowsKey = 8
         }
 
+        //初始化绑定默认的快捷键
         public static void Start(IntPtr ptr)
         {
             RegisterHotKey(ptr, KeyName.Top, KeyModifiers.None, Keys.F1);
@@ -67,6 +69,7 @@ namespace QuickTimeEnter
          }
          */
 
+        //程序结束时，将所有快捷键注销
         public static void Leave(IntPtr ptr)
         {
             UnregisterHotKey(ptr, KeyName.Top);

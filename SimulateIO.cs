@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace QuickTimeEnter
 {
+    //底层I/O信号模拟器
     class SimulateIO
     {
         public const int KBC_KEY_CMD = 0x64;
