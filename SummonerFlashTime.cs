@@ -31,7 +31,7 @@ namespace QuickTimeEnter
 
         public uint[] Time { get => time; set => time = value; }
 
-        //timer一次时间的减少
+        //timer一次,时间减少一秒
         public void FlashETA(params Label[] labels)
         {
             for (int i = 0; i < 5; i++)

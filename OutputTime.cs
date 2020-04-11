@@ -23,29 +23,38 @@ namespace QuickTimeEnter
                 msg += summonerName[i] + TimeFix(g.Minutes, g.Seconds, s.Time[i]) + " ";
             }
             Console.WriteLine(msg);
+
             /*
-                        try
-                        {
-                            SendKeys.Send("{ENTER}" + "{CAPSLOCK}" + msg + "{CAPSLOCK}" + "{ENTER}");
-                        }
-                        catch (InvalidOperationException e)
-                        {
-                            Console.WriteLine(e.Message);
-                            Console.WriteLine("Find a error!");
-                            throw;
-                        }
+            try
+            {
+                SendKeys.Send("{ENTER}" + "{CAPSLOCK}" + msg + "{CAPSLOCK}" + "{ENTER}");
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Find a error!");
+                throw;
+            }
             */
 
             //从底层模拟键盘输入
-            SimulateIO.MykeyDown((int)Keys.Enter);
-            SimulateIO.MykeyUp((int)Keys.Enter);
-            SimulateIO.MykeyDown((int)Keys.CapsLock);
-            SimulateIO.MykeyUp((int)Keys.CapsLock);
-            Click(msg.ToCharArray());
-            SimulateIO.MykeyDown((int)Keys.CapsLock);
-            SimulateIO.MykeyUp((int)Keys.CapsLock);
-            SimulateIO.MykeyDown((int)Keys.Enter);
-            SimulateIO.MykeyUp((int)Keys.Enter);
+            SimulateIO.KeyDown(Keys.Enter);
+            System.Threading.Thread.Sleep(50);
+            SimulateIO.KeyUp(Keys.Enter);
+            System.Threading.Thread.Sleep(50);
+            SimulateIO.KeyDown(Keys.CapsLock);
+            System.Threading.Thread.Sleep(50);
+            SimulateIO.KeyUp(Keys.CapsLock);
+            System.Threading.Thread.Sleep(50);
+            IOHandle(msg.ToCharArray());
+            System.Threading.Thread.Sleep(50);
+            SimulateIO.KeyDown(Keys.CapsLock);
+            System.Threading.Thread.Sleep(50);
+            SimulateIO.KeyUp(Keys.CapsLock);
+            System.Threading.Thread.Sleep(50);
+            SimulateIO.KeyDown(Keys.Enter);
+            System.Threading.Thread.Sleep(50);
+            SimulateIO.KeyUp(Keys.Enter);
 
         }
 
@@ -62,30 +71,10 @@ namespace QuickTimeEnter
         }
 
         //将主体信息部分进行底层模拟信号处理
-        public static void Click(char[] msg)
+        public static void IOHandle(char[] msg)
         {
             for (int i = 0; i < msg.Length; i++)
             {
-                //LOL不支持消息队列输出，所以不要碰下面的代码
-                #region 自闭代码，谁碰谁知道
-/*
-                    object o;
-                    int ri;
-                    if (msg[i].Equals(""))
-                    {
-                        o = Keys.Space;
-                    }
-                    else if (int.TryParse(msg.ToString(), out ri))
-                    {
-                        o = Enum.Parse(typeof(Keys), "D" + ri);
-                    }
-                    else
-                    {
-                        o = Enum.Parse(typeof(Keys), msg[i].ToString().ToUpper());
-                        //Console.WriteLine(o.ToString());
-                    }
-*/
-                #endregion
                 Keys k = Keys.Space;
                 switch (msg[i])
                 {
@@ -159,8 +148,8 @@ namespace QuickTimeEnter
                         k = Keys.U;
                         break;
                 }
-                SimulateIO.MykeyDown((int)k);
-                SimulateIO.MykeyUp((int)k);
+                SimulateIO.KeyDown(k);
+                SimulateIO.KeyUp(k);
             }
         }
     }

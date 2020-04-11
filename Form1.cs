@@ -19,8 +19,9 @@ namespace QuickTimeEnter
         private void Form1_Load(object sender, EventArgs e)
         {
             pattern = @"^\d{1,2}[:：][0-5]?[0-9]$";
-            gameName = "League of Legends";
+            gameName = "League of Legends (TM) Client";
             GlobalShortcutKey.Start(Handle);
+            //SimulateIO.Initialize();
         }
 
         private void btnSetFromTop_Click(object sender, EventArgs e)
@@ -88,23 +89,15 @@ namespace QuickTimeEnter
 
         private void button1_Click(object sender, MouseEventArgs e)
         {
-            #region 解决一个问题
-
-            /// <summary>
-            /// 关于 Click(EventArgs) 事件和 MouseClick(MouseEventArgs) 事件的区别和影响
-            /// </summary>
-            /// 回车指令判定为触发了Click事件，导致该函数被调用
-            /// MouseClick只会对鼠标的单击事件做出响应
-            #endregion
-            //LeagueClientUx
-            //SwitchWindow.SwitchWindowFromQTE("notepad")
-            if (true)
+            try
             {
                 System.Threading.Thread.Sleep(1000);
-                OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+                //OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
             }
-            
-            //OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void txtTopShortcutKey_TextChanged(object sender, EventArgs e)
@@ -199,6 +192,12 @@ namespace QuickTimeEnter
                 }
             }
             base.WndProc(ref m);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GlobalShortcutKey.Leave(Handle);
+            //SimulateIO.Shutdown();
         }
     }
 }
