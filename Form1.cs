@@ -10,7 +10,8 @@ namespace QuickTimeEnter
         string gameName;
         private GameTime gameTime;
         private SummonerFlashTime summonerFlashTime;
-
+        private OutputTime outputTime;
+        private KeyboardHook hook;
         public Form1()
         {
             InitializeComponent();
@@ -20,8 +21,87 @@ namespace QuickTimeEnter
         {
             pattern = @"^\d{1,2}[:：][0-5]?[0-9]$";
             gameName = "League of Legends (TM) Client";
-            GlobalShortcutKey.Start(Handle);
-            //SimulateIO.Initialize();
+            outputTime = new OutputTime();
+            hook = new KeyboardHook();
+            hook.KeyDownEvent += new KeyEventHandler(hook_KeyDown);
+            hook.Start();
+        }
+
+        private void hook_KeyDown(object sender, KeyEventArgs e)
+        {
+            #region 判断按下的键
+
+            if (e.KeyValue == (int)Keys.F1)
+            {
+                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                {
+                    lblTopETA.Text = "";
+                    summonerFlashTime.Time[0] = 0;
+                }
+                else
+                {
+                    lblTopETA.Text = "300";
+                    summonerFlashTime.Time[0] = 300;
+                }
+            }
+            if (e.KeyValue == (int)Keys.F2)
+            {
+                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                {
+                    lblJgETA.Text = "";
+                    summonerFlashTime.Time[1] = 0;
+                }
+                else
+                {
+                    lblJgETA.Text = "300";
+                    summonerFlashTime.Time[1] = 300;
+                }
+            }
+            if (e.KeyValue == (int)Keys.F3)
+            {
+                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                {
+                    lblMidETA.Text = "";
+                    summonerFlashTime.Time[2] = 0;
+                }
+                else
+                {
+                    lblMidETA.Text = "300";
+                    summonerFlashTime.Time[2] = 300;
+                }
+            }
+            if (e.KeyValue == (int)Keys.F4)
+            {
+                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                {
+                    lblAdcETA.Text = "";
+                    summonerFlashTime.Time[3] = 0;
+                }
+                else
+                {
+                    lblAdcETA.Text = "300";
+                    summonerFlashTime.Time[3] = 300;
+                }
+            }
+            if (e.KeyValue == (int)Keys.F5)
+            {
+                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                {
+                    lblSupETA.Text = "";
+                    summonerFlashTime.Time[4] = 0;
+                }
+                else
+                {
+                    lblSupETA.Text = "300";
+                    summonerFlashTime.Time[4] = 300;
+                }
+            }
+            if (e.KeyValue == (int)Keys.F6)
+            {
+                outputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+            }
+
+            #endregion
         }
 
         private void btnSetFromTop_Click(object sender, EventArgs e)
@@ -92,8 +172,7 @@ namespace QuickTimeEnter
             try
             {
                 System.Threading.Thread.Sleep(1000);
-                //OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
-                SimulateIO.Test(lblInputInfo);
+                outputTime.KeyTimeToGame(gameTime, summonerFlashTime);
             }
             catch (Exception)
             {
@@ -126,79 +205,9 @@ namespace QuickTimeEnter
 
         }
 
-        // 接收快捷键信息，然后执行相关操作
-        protected override void WndProc(ref Message m)
-        {
-            const int WM_HOTKEY = 0x0312;
-            if (summonerFlashTime != null && m.Msg==WM_HOTKEY)
-            {
-                // 快捷键事件
-                switch (m.WParam.ToInt32())
-                {
-                    //设置时长
-                    case (int)KeyName.Top:
-                        lblTopETA.Text = "300";
-                        summonerFlashTime.Time[0] = 300;
-                        break;
-
-                    case (int)KeyName.Jg:
-                        lblJgETA.Text = "300";
-                        summonerFlashTime.Time[1] = 300;
-                        break;
-
-                    case (int)KeyName.Mid:
-                        lblMidETA.Text = "300";
-                        summonerFlashTime.Time[2] = 300;
-                        break;
-
-                    case (int)KeyName.Adc:
-                        lblAdcETA.Text = "300";
-                        summonerFlashTime.Time[3] = 300;
-                        break;
-
-                    case (int)KeyName.Sup:
-                        lblSupETA.Text = "300";
-                        summonerFlashTime.Time[4] = 300;
-                        break;
-
-                    //取消时长
-                    case (int)KeyName.Top + 5:
-                        lblTopETA.Text = "";
-                        summonerFlashTime.Time[0] = 0;
-                        break;
-
-                    case (int)KeyName.Jg + 5:
-                        lblJgETA.Text = "";
-                        summonerFlashTime.Time[1] = 0;
-                        break;
-
-                    case (int)KeyName.Mid + 5:
-                        lblMidETA.Text = "";
-                        summonerFlashTime.Time[2] = 0;
-                        break;
-
-                    case (int)KeyName.Adc + 5:
-                        lblAdcETA.Text = "";
-                        summonerFlashTime.Time[3] = 0;
-                        break;
-
-                    case (int)KeyName.Sup + 5:
-                        lblSupETA.Text = "";
-                        summonerFlashTime.Time[4] = 0;
-                        break;
-
-                    case (int)KeyName.Send:
-                        OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
-                        break;
-                }
-            }
-            base.WndProc(ref m);
-        }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            GlobalShortcutKey.Leave(Handle);
-            //SimulateIO.Shutdown();
+            hook.Stop();
         }
     }
 }

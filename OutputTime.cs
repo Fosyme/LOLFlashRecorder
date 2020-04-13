@@ -8,9 +8,15 @@ namespace QuickTimeEnter
     {
         private static string[] summonerName =
             {"top", "jg", "mid", "adc", "sup"};
+        private readonly Dm.dmsoft dm;
+
+        public OutputTime()
+        {
+            dm = new Dm.dmsoft();
+        }
 
         //将时间格式化输出
-        public static void KeyTimeToGame(GameTime g, SummonerFlashTime s)
+        public void KeyTimeToGame(GameTime g, SummonerFlashTime s)
         {
             string msg = "";
             for (int i = 0; i < 5; i++)
@@ -36,7 +42,11 @@ namespace QuickTimeEnter
                 throw;
             }
             */
-
+            dm.KeyPressChar("enter");
+            dm.KeyPressChar("cap");
+            IOHandle(msg.ToCharArray());
+            dm.KeyPressChar("cap");
+            dm.KeyPressChar("enter");
         }
 
         //将信息格式化处理
@@ -44,18 +54,27 @@ namespace QuickTimeEnter
         {
             uint minutes = m + (s + st) / 60;
             uint seconds = (s + st) % 60;
+            string strSec = seconds.ToString();
+            string strMin = minutes.ToString();
+
             if (seconds < 10)
             {
-                return minutes.ToString() + "0" + seconds.ToString();
+                strSec = "0" + seconds.ToString();
             }
-            return minutes.ToString() + seconds.ToString();
+            if (minutes < 10)
+            {
+                strMin = "0" + minutes.ToString();
+            }
+            return strMin + strSec;
         }
 
         //将主体信息部分进行底层模拟信号处理
-        public static void IOHandle(char[] msg)
+        private void IOHandle(char[] msg)
         {
             for (int i = 0; i < msg.Length; i++)
             {
+                #region 原来的代码
+                /*
                 Keys k = Keys.Space;
                 switch (msg[i])
                 {
@@ -128,6 +147,16 @@ namespace QuickTimeEnter
                     case 'u':
                         k = Keys.U;
                         break;
+                }
+                */
+                #endregion
+                if (msg[i]==' ')
+                {
+                    dm.KeyPressChar("space");
+                }
+                else
+                {
+                    dm.KeyPressChar(msg[i].ToString());
                 }
             }
         }
