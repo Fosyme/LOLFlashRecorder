@@ -37,25 +37,6 @@ namespace QuickTimeEnter
             }
             */
 
-            //从底层模拟键盘输入
-            SimulateIO.KeyDown(Keys.Enter);
-            System.Threading.Thread.Sleep(50);
-            SimulateIO.KeyUp(Keys.Enter);
-            System.Threading.Thread.Sleep(50);
-            SimulateIO.KeyDown(Keys.CapsLock);
-            System.Threading.Thread.Sleep(50);
-            SimulateIO.KeyUp(Keys.CapsLock);
-            System.Threading.Thread.Sleep(50);
-            IOHandle(msg.ToCharArray());
-            System.Threading.Thread.Sleep(50);
-            SimulateIO.KeyDown(Keys.CapsLock);
-            System.Threading.Thread.Sleep(50);
-            SimulateIO.KeyUp(Keys.CapsLock);
-            System.Threading.Thread.Sleep(50);
-            SimulateIO.KeyDown(Keys.Enter);
-            System.Threading.Thread.Sleep(50);
-            SimulateIO.KeyUp(Keys.Enter);
-
         }
 
         //将信息格式化处理
@@ -148,8 +129,6 @@ namespace QuickTimeEnter
                         k = Keys.U;
                         break;
                 }
-                SimulateIO.KeyDown(k);
-                SimulateIO.KeyUp(k);
             }
         }
     }

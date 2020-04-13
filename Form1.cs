@@ -93,6 +93,7 @@ namespace QuickTimeEnter
             {
                 System.Threading.Thread.Sleep(1000);
                 //OutputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+                SimulateIO.Test(lblInputInfo);
             }
             catch (Exception)
             {
