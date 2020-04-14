@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace QuickTimeEnter
 {
@@ -8,7 +6,7 @@ namespace QuickTimeEnter
     {
         private static string[] summonerName =
             {"top", "jg", "mid", "adc", "sup"};
-        private readonly Dm.dmsoft dm;
+        private Dm.dmsoft dm;
 
         public OutputTime()
         {
