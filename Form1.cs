@@ -12,6 +12,7 @@ namespace QuickTimeEnter
         private SummonerFlashTime summonerFlashTime;
         private OutputTime outputTime;
         private KeyboardHook hook;
+
         public Form1()
         {
             InitializeComponent();
@@ -21,8 +22,12 @@ namespace QuickTimeEnter
         {
             pattern = @"^\d{1,2}[:：][0-5]?[0-9]$";
             gameName = "League of Legends (TM) Client";
+
             outputTime = new OutputTime();
+            summonerFlashTime = new SummonerFlashTime();
+            gameTime = new GameTime();
             hook = new KeyboardHook();
+
             hook.KeyDownEvent += new KeyEventHandler(hook_KeyDown);
             hook.Start();
         }
@@ -100,6 +105,14 @@ namespace QuickTimeEnter
             {
                 outputTime.KeyTimeToGame(gameTime, summonerFlashTime);
             }
+            if (e.KeyValue == (int)Keys.F7)
+            {
+                btnStart_Click(sender, e);
+            }
+            if (e.KeyValue == (int)Keys.F8)
+            {
+                btnReset_Click(sender, e);
+            }
 
             #endregion
         }
@@ -134,8 +147,8 @@ namespace QuickTimeEnter
                     return;
                 }
                 string[] nowGameTime = txtGameTime.Text.Split(':', '：');
-                gameTime = new GameTime(nowGameTime[0], nowGameTime[1]);
-                summonerFlashTime = new SummonerFlashTime(lblTopETA, lblJgETA, lblMidETA, lblAdcETA, lblSupETA);
+                gameTime.SetGametime(nowGameTime[0], nowGameTime[1]);
+                summonerFlashTime.StartInput(lblTopETA, lblJgETA, lblMidETA, lblAdcETA, lblSupETA);
                 timer1.Enabled = true;
             }
             else
@@ -165,6 +178,7 @@ namespace QuickTimeEnter
         private void lnklblHelpManual_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //System.Diagnostics.Process.Start();
+            System.Diagnostics.Process.Start(@".\使用方法.txt");
         }
 
         private void button1_Click(object sender, MouseEventArgs e)

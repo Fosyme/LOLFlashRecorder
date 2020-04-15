@@ -17,19 +17,19 @@ namespace QuickTimeEnter
             }
         }
 
+        public uint[] Time { get => time; set => time = value; }
+
         //初始化每个位置的时间，主要用于初始化对象
-        public SummonerFlashTime(params Label[] labels)
+        public void StartInput(params Label[] labels)
         {
             time = new uint[5];
             for (int i = 0; i < 5; i++)
             {
-                time[i] = 
-                    (labels[i].Text.Equals("") || labels[i].Text == null || labels[i].Text.Equals("0")) ? 
+                time[i] =
+                    (labels[i].Text.Equals("") || labels[i].Text == null || labels[i].Text.Equals("0")) ?
                     0 : uint.Parse(labels[i].Text);
             }
         }
-
-        public uint[] Time { get => time; set => time = value; }
 
         //timer一次,时间减少一秒
         public void FlashETA(params Label[] labels)

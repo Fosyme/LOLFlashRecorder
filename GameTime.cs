@@ -7,14 +7,17 @@ namespace QuickTimeEnter
         private uint minutes;   //分钟
         private uint seconds;   //秒钟
 
-        public GameTime(string m, string s)
+        public GameTime()
+        { }
+
+        public uint Minutes { get => minutes; set => minutes = value; }
+        public uint Seconds { get => seconds; set => seconds = value; }
+
+        public void SetGametime(string m, string s)
         {
             minutes = uint.Parse(m);
             seconds = uint.Parse(s);
         }
-
-        public uint Minutes { get => minutes; set => minutes = value; }
-        public uint Seconds { get => seconds; set => seconds = value; }
 
         //timer运行一次，游戏时间加一秒
         public void StartTimer(TextBox textBox)
