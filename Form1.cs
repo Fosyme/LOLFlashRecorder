@@ -28,11 +28,11 @@ namespace QuickTimeEnter
             gameTime = new GameTime();
             hook = new KeyboardHook();
 
-            hook.KeyDownEvent += new KeyEventHandler(hook_KeyDown);
+            hook.OnKeyDownEvent += Hook_KeyDown;
             hook.Start();
         }
 
-        private void hook_KeyDown(object sender, KeyEventArgs e)
+        private void Hook_KeyDown(object sender, KeyEventArgs e)
         {
             #region 判断按下的键
 
