@@ -100,6 +100,9 @@
     <Content Include="使用方法.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="权限设置.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="注册dll.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
