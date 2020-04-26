@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuickTimeEnter
+namespace LOLFlashRecorder
 {
     class OutputTime
     {

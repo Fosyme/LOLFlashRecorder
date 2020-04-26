@@ -1,5 +1,5 @@
-# QuickTimeEnter
-Quick Time Enter (QTE) 用于LOL快速记录地方闪现时间
+# LOLFlashRecorder
+LOL Flash Recorder (LFR) 用于LOL快速记录闪现时间
 
 ## **第一次使用请注意**
 

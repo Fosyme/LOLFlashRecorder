@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace QuickTimeEnter
+namespace LOLFlashRecorder
 {
     static class Program
     {

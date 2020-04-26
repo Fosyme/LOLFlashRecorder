@@ -1,6 +1,6 @@
 ﻿欢迎使用本软件，请仔细阅读下方信息
 
-Quick Time Enter (QTE) 用于LOL快速记录地方闪现时间
+LOL Flash Recorder (LFR) 用于LOL快速记录闪现时间
 
 第一次使用请注意
 如果你是第一次使用这个软件，请仔细阅读下面的信息：

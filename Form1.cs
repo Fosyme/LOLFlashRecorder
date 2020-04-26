@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace QuickTimeEnter
+namespace LOLFlashRecorder
 {
     public partial class Form1 : Form
     {

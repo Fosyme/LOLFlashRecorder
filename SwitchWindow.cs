@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace QuickTimeEnter
+namespace LOLFlashRecorder
 {
     class SwitchWindow
     {

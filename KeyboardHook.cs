@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace QuickTimeEnter
+namespace LOLFlashRecorder
 {
     /// <summary>
     /// 键盘钩子

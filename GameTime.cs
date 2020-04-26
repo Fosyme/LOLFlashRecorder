@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace QuickTimeEnter
+namespace LOLFlashRecorder
 {
     class GameTime
     {
