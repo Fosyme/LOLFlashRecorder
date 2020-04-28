@@ -1,21 +1,65 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace LOLFlashRecorder
 {
     public partial class Form1 : Form
     {
-        string pattern;
-        string gameName;
+        private string pattern;
+        private string gameName;
         private GameTime gameTime;
         private SummonerFlashTime summonerFlashTime;
         private OutputTime outputTime;
         private KeyboardHook hook;
+        private ShowMsgOnTop smot;
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("user32.dll")]
+        public static extern bool SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+        bool beginMove = false;//初始化鼠标位置
+        int currentXPosition;
+        int currentYPosition;
+
+        //获取鼠标按下时的位置
+        private void loginForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                beginMove = true;
+                currentXPosition = MousePosition.X;//鼠标的x坐标为当前窗体左上角x坐标
+                currentYPosition = MousePosition.Y;//鼠标的y坐标为当前窗体左上角y坐标
+            }
+        }
+        //获取鼠标移动到的位置
+        private void loginForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (beginMove)
+            {
+                this.Left += MousePosition.X - currentXPosition;//根据鼠标x坐标确定窗体的左边坐标x
+                this.Top += MousePosition.Y - currentYPosition;//根据鼠标的y坐标窗体的顶部，即Y坐标
+                currentXPosition = MousePosition.X;
+                currentYPosition = MousePosition.Y;
+            }
+        }
+
+        //释放鼠标时的位置
+        private void loginForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                currentXPosition = 0; //设置初始状态
+                currentYPosition = 0;
+                beginMove = false;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -128,6 +172,7 @@ namespace LOLFlashRecorder
         {
             timer1.Enabled = false;
             btnStart.Text = "开始";
+            btnStart.ForeColor = Color.OliveDrab;
             txtGameTime.Text = "00:00";
             lblTopETA.Text = "";
             lblJgETA.Text = "";
@@ -141,6 +186,7 @@ namespace LOLFlashRecorder
             if (btnStart.Text.Equals("开始"))
             {
                 btnStart.Text = "暂停";
+                btnStart.ForeColor = Color.Red;
                 if (!Regex.IsMatch(txtGameTime.Text, pattern))
                 {
                     lblInputInfo.Visible = true;
@@ -155,6 +201,7 @@ namespace LOLFlashRecorder
             {
                 timer1.Enabled = false;
                 btnStart.Text = "开始";
+                btnStart.ForeColor = Color.OliveDrab;
             }
 
         }
@@ -185,12 +232,12 @@ namespace LOLFlashRecorder
         {
             try
             {
-                System.Threading.Thread.Sleep(1000);
-                outputTime.KeyTimeToGame(gameTime, summonerFlashTime);
+                smot = new ShowMsgOnTop();
+                smot.Show();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -247,6 +294,20 @@ namespace LOLFlashRecorder
             else
             {
                 e.Cancel = true; 
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMin_Click(object sender, EventArgs e)
+        {
+            if (WindowState != FormWindowState.Minimized)
+            {
+                Hide();
+                ShowInTaskbar = false;
             }
         }
     }
