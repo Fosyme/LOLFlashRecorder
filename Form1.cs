@@ -194,34 +194,60 @@ namespace LOLFlashRecorder
             }
         }
 
-        private void txtTopShortcutKey_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtJgShortcutKey_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMidShortcutKey_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtAdcShortcutKey_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSupShortcutKey_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             hook.Stop();
+        }
+
+        private void Form1_Deactivate(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                ShowInTaskbar = false;
+            }
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Show();
+                ShowInTaskbar = true;
+                WindowState = FormWindowState.Normal;
+                Activate();
+            }
+        }
+
+        private void open_Click(object sender, EventArgs e)
+        {
+            Show();
+            ShowInTaskbar = true;
+            WindowState = FormWindowState.Normal;
+            Activate();
+        }
+
+        private void about_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("是否要结束程序？","提示",MessageBoxButtons.YesNo,MessageBoxIcon.Information,MessageBoxDefaultButton.Button1);
+            if (dr == DialogResult.Yes) 
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true; 
+            }
         }
     }
 }

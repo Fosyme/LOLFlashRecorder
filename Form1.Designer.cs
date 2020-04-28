@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.open = new System.Windows.Forms.ToolStripMenuItem();
+            this.about = new System.Windows.Forms.ToolStripMenuItem();
+            this.close = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblGameTime = new System.Windows.Forms.Label();
             this.txtGameTime = new System.Windows.Forms.TextBox();
@@ -65,6 +69,7 @@
             this.lblInputInfo = new System.Windows.Forms.Label();
             this.lblDelay = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlJg.SuspendLayout();
             this.pnlMid.SuspendLayout();
@@ -75,15 +80,49 @@
             // 
             // notifyIcon1
             // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "LOL Flash Recorder";
+            this.notifyIcon1.Text = "LOL闪现记录器 (LFR)";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.open,
+            this.about,
+            this.close});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
+            // 
+            // open
+            // 
+            this.open.Name = "open";
+            this.open.Size = new System.Drawing.Size(100, 22);
+            this.open.Text = "打开";
+            this.open.Click += new System.EventHandler(this.open_Click);
+            // 
+            // about
+            // 
+            this.about.Name = "about";
+            this.about.Size = new System.Drawing.Size(100, 22);
+            this.about.Text = "关于";
+            this.about.Click += new System.EventHandler(this.about_Click);
+            // 
+            // close
+            // 
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(100, 22);
+            this.close.Text = "退出";
+            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 12);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(284, 45);
+            this.pictureBox1.Size = new System.Drawing.Size(272, 45);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -203,7 +242,6 @@
             this.txtJgShortcutKey.TabIndex = 12;
             this.txtJgShortcutKey.Text = "F2";
             this.txtJgShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtJgShortcutKey.TextChanged += new System.EventHandler(this.txtJgShortcutKey_TextChanged);
             // 
             // lblJg
             // 
@@ -244,7 +282,6 @@
             this.txtMidShortcutKey.TabIndex = 12;
             this.txtMidShortcutKey.Text = "F3";
             this.txtMidShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMidShortcutKey.TextChanged += new System.EventHandler(this.txtMidShortcutKey_TextChanged);
             // 
             // lblMid
             // 
@@ -285,7 +322,6 @@
             this.txtAdcShortcutKey.TabIndex = 12;
             this.txtAdcShortcutKey.Text = "F4";
             this.txtAdcShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtAdcShortcutKey.TextChanged += new System.EventHandler(this.txtAdcShortcutKey_TextChanged);
             // 
             // lblAdc
             // 
@@ -326,7 +362,6 @@
             this.txtSupShortcutKey.TabIndex = 12;
             this.txtSupShortcutKey.Text = "F5";
             this.txtSupShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSupShortcutKey.TextChanged += new System.EventHandler(this.txtSupShortcutKey_TextChanged);
             // 
             // lblSup
             // 
@@ -358,7 +393,6 @@
             this.txtTopShortcutKey.TabIndex = 12;
             this.txtTopShortcutKey.Text = "F1";
             this.txtTopShortcutKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTopShortcutKey.TextChanged += new System.EventHandler(this.txtTopShortcutKey_TextChanged);
             // 
             // pnlTop
             // 
@@ -456,9 +490,12 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LOL闪现记录器 - LOL Flash Recorder";
+            this.Text = "LOL Flash Recorder";
+            this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlJg.ResumeLayout(false);
             this.pnlJg.PerformLayout();
@@ -511,6 +548,10 @@
         private System.Windows.Forms.Label lblSupETA;
         private System.Windows.Forms.Label lblTopETA;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem open;
+        private System.Windows.Forms.ToolStripMenuItem about;
+        private System.Windows.Forms.ToolStripMenuItem close;
     }
 }
 

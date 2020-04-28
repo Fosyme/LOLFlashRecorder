@@ -7,7 +7,7 @@
     <ProjectGuid>{21C6B878-B964-43D5-A543-0EF4E94F0E92}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>LOLFlashRecorder</RootNamespace>
-    <AssemblyName>LOLFlashRecorder</AssemblyName>
+    <AssemblyName>LOL Flash Recorder</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -101,6 +101,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Content Include="logo.ico" />
+    <Content Include="scroll bar.gif" />
     <Content Include="使用方法.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
