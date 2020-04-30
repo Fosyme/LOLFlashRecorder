@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace LOLFlashRecorder
 {
@@ -14,11 +15,15 @@ namespace LOLFlashRecorder
         private SummonerFlashTime summonerFlashTime;
         private OutputTime outputTime;
         private KeyboardHook hook;
-        private ShowMsgOnTop smot;
+        private ShowMsgOnTop showMsgOnTop;
+        private Thread threadOfSMOT;
+        private int numOfSMOT;
+
 
         public Form1()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         [DllImport("user32.dll")]
@@ -66,6 +71,7 @@ namespace LOLFlashRecorder
         {
             pattern = @"^\d{1,2}[:：][0-5]?[0-9]$";
             gameName = "League of Legends (TM) Client";
+            numOfSMOT = 0;
 
             outputTime = new OutputTime();
             summonerFlashTime = new SummonerFlashTime();
@@ -82,68 +88,73 @@ namespace LOLFlashRecorder
 
             if (e.KeyValue == (int)Keys.F1)
             {
-                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                if ((int)ModifierKeys == (int)Keys.Shift)
                 {
                     lblTopETA.Text = "";
                     summonerFlashTime.Time[0] = 0;
                 }
                 else
                 {
-                    lblTopETA.Text = "300";
-                    summonerFlashTime.Time[0] = 300;
+                    lblTopETA.Text = "290";
+                    summonerFlashTime.Time[0] = 290;
                 }
+                ThreadShowMsg();
             }
             if (e.KeyValue == (int)Keys.F2)
             {
-                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                if ((int)ModifierKeys == (int)Keys.Shift)
                 {
                     lblJgETA.Text = "";
                     summonerFlashTime.Time[1] = 0;
                 }
                 else
                 {
-                    lblJgETA.Text = "300";
-                    summonerFlashTime.Time[1] = 300;
+                    lblJgETA.Text = "290";
+                    summonerFlashTime.Time[1] = 290;
                 }
+                ThreadShowMsg();
             }
             if (e.KeyValue == (int)Keys.F3)
             {
-                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                if ((int)ModifierKeys == (int)Keys.Shift)
                 {
                     lblMidETA.Text = "";
                     summonerFlashTime.Time[2] = 0;
                 }
                 else
                 {
-                    lblMidETA.Text = "300";
-                    summonerFlashTime.Time[2] = 300;
+                    lblMidETA.Text = "290";
+                    summonerFlashTime.Time[2] = 290;
                 }
+                ThreadShowMsg();
             }
             if (e.KeyValue == (int)Keys.F4)
             {
-                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                if ((int)ModifierKeys == (int)Keys.Shift)
                 {
                     lblAdcETA.Text = "";
                     summonerFlashTime.Time[3] = 0;
                 }
                 else
                 {
-                    lblAdcETA.Text = "300";
-                    summonerFlashTime.Time[3] = 300;
+                    lblAdcETA.Text = "290";
+                    summonerFlashTime.Time[3] = 290;
                 }
+                ThreadShowMsg();
             }
             if (e.KeyValue == (int)Keys.F5)
             {
-                if ((int)Control.ModifierKeys == (int)Keys.Shift)
+                if ((int)ModifierKeys == (int)Keys.Shift)
                 {
                     lblSupETA.Text = "";
                     summonerFlashTime.Time[4] = 0;
                 }
                 else
                 {
-                    lblSupETA.Text = "300";
-                    summonerFlashTime.Time[4] = 300;
+                    lblSupETA.Text = "290";
+                    summonerFlashTime.Time[4] = 290;
                 }
+                ThreadShowMsg();
             }
             if (e.KeyValue == (int)Keys.F6)
             {
@@ -152,20 +163,48 @@ namespace LOLFlashRecorder
             if (e.KeyValue == (int)Keys.F7)
             {
                 btnStart_Click(sender, e);
+                ThreadShowMsg();
             }
             if (e.KeyValue == (int)Keys.F8)
             {
                 btnReset_Click(sender, e);
+                ThreadShowMsg();
             }
-
+            if (e.KeyValue == (int)Keys.Oemtilde)
+            {
+                ThreadShowMsg();
+            }
             #endregion
+        }
+
+        private void ThreadShowMsg()
+        {
+            //只允许一个线程进行
+            if (numOfSMOT == 0)
+            {
+                numOfSMOT++;
+                threadOfSMOT = new Thread(new ThreadStart(CallShowMsg));
+                threadOfSMOT.Start();
+            }
+        }
+
+        private void CallShowMsg()
+        {
+            showMsgOnTop = new ShowMsgOnTop();
+            showMsgOnTop.Show();
+            showMsgOnTop.ShowMsg(gameTime, summonerFlashTime);
+            showMsgOnTop.Refresh(); //重绘窗体
+            showMsgOnTop.TopMost = true;
+            Thread.Sleep(3000);
+            numOfSMOT--;
+            showMsgOnTop.Dispose();
         }
 
         private void btnSetFromTop_Click(object sender, EventArgs e)
         {
             bool isTop = btnSetFromTop.Text.Equals("置顶");
             btnSetFromTop.Text = isTop ? "取消置顶" : "置顶";
-            this.TopMost = isTop;
+            TopMost = isTop;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -232,8 +271,7 @@ namespace LOLFlashRecorder
         {
             try
             {
-                smot = new ShowMsgOnTop();
-                smot.Show();
+                ThreadShowMsg();
             }
             catch (Exception ex)
             {

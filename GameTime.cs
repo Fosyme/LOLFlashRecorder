@@ -2,7 +2,7 @@
 
 namespace LOLFlashRecorder
 {
-    class GameTime
+    public class GameTime
     {
         private uint minutes;   //分钟
         private uint seconds;   //秒钟

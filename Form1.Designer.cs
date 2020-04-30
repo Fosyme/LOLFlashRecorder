@@ -141,7 +141,7 @@
             this.txtGameTime.Name = "txtGameTime";
             this.txtGameTime.Size = new System.Drawing.Size(340, 65);
             this.txtGameTime.TabIndex = 4;
-            this.txtGameTime.Text = "00:00";
+            this.txtGameTime.Text = "00:30";
             this.txtGameTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtGameTime.WordWrap = false;
             this.txtGameTime.TextChanged += new System.EventHandler(this.txtGameTime_TextChanged);
@@ -494,6 +494,7 @@
             this.button1.TabIndex = 17;
             this.button1.Text = "测试\r\n按钮";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_Click);
             // 
             // lblTitle
@@ -509,7 +510,7 @@
             // 
             // picLogo
             // 
-            this.picLogo.Image = global::LOLFlashRecorder.Properties.Resources.logo;
+            this.picLogo.Image = global::LOLFlashRecorder.Properties.Resources.logo1;
             this.picLogo.Location = new System.Drawing.Point(2, 2);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(32, 32);

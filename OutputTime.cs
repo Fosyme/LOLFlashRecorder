@@ -4,8 +4,8 @@ namespace LOLFlashRecorder
 {
     class OutputTime
     {
-        private static string[] summonerName =
-            {"top", "jg", "mid", "adc", "sup"};
+        public static string[] summonerName =
+            {"Top", "Jg", "Mid", "ADC", "Sup"};
         private Dm.dmsoft dm;
 
         public OutputTime()

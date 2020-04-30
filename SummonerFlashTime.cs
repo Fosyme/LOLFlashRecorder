@@ -2,7 +2,7 @@
 
 namespace LOLFlashRecorder
 {
-    class SummonerFlashTime
+    public class SummonerFlashTime
     {
         //存储每个位置的剩余时间
         private uint[] time;
