@@ -7,8 +7,12 @@ namespace LOLFlashRecorder
         private uint minutes;   //分钟
         private uint seconds;   //秒钟
 
+        //初始化游戏时间（自v1.3.0）
         public GameTime()
-        { }
+        {
+            minutes = 0;
+            seconds = 30;
+        }
 
         public uint Minutes { get => minutes; set => minutes = value; }
         public uint Seconds { get => seconds; set => seconds = value; }
