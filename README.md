@@ -8,6 +8,8 @@ LOL Flash Recorder (LFR) 用于LOL快速记录闪现时间，在游戏中快速�
 
 ## :star:使用方法:key:
 
+**[点击下载软件](https://github.com/Fosyme/LOLFlashRecorder/releases/download/v1.3.0/LOLFlashRecorder-Windows-x86_64-v1.3.0.zip)**
+
 ### 如果你是第一次使用这个软件，请仔细阅读下面的信息
 
 -   **本软件默认是以管理员身份运行，如果当前用户不是管理员可能无法运行**
